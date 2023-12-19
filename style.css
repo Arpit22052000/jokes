@@ -23,3 +23,16 @@
 .card-joke{
     color:navy;
 }
+
+#general:active{
+    background-color: #ffbf00;
+}
+#program:active{
+    background-color: #7a672e;
+}
+
+
+#newJokes:active{
+    background-color: #bab3a5;
+}
+
