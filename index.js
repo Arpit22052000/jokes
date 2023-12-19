@@ -83,6 +83,21 @@ function filterGeneral() {
     generalJokesFinal = []
     generalJokesFinal = generalJokesFinal.concat(generalJokes)
     console.log("general Jokes: ", generalJokesFinal)
+
+    let postContainer = document.querySelector('.card-container');
+    postContainer.innerHTML = '';
+    const postMethods = () => {
+        generalJokesFinal.map((postData) => {
+            const postElement = document.createElement('div');
+            postElement.classList.add('.card');
+            postElement.innerHTML = `
+                                <h3 class="card-type" >${postData.type}</h3 >
+                                <p class="card-joke">${postData.setup}</p>
+                        `
+            postContainer.appendChild(postElement);
+        })
+    }
+    postMethods();
 }
 function filterProgramming() {
     const programJokes = allJokes.filter(function (proJokes) {
@@ -93,4 +108,19 @@ function filterProgramming() {
 
     programJokesFinal = programJokesFinal.concat(programJokes)
     console.log("program Jokes", programJokesFinal)
+
+    let postContainer = document.querySelector('.card-container');
+    postContainer.innerHTML = '';
+    const postMethods = () => {
+        programJokesFinal.map((postData) => {
+            const postElement = document.createElement('div');
+            postElement.classList.add('.card');
+            postElement.innerHTML = `
+                                <h3 class="card-type" >${postData.type}</h3 >
+                                <p class="card-joke">${postData.setup}</p>
+                        `
+            postContainer.appendChild(postElement);
+        })
+    }
+    postMethods();
 }
