@@ -33,9 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
         console.log(error)
     }
-
-
-
 })
 
 
@@ -83,6 +80,7 @@ function filterGeneral() {
         return genJokes.type == "general";
     });
     console.log(generalJokes)
+    generalJokesFinal = []
     generalJokesFinal = generalJokesFinal.concat(generalJokes)
     console.log("general Jokes: ", generalJokesFinal)
 }
@@ -91,6 +89,7 @@ function filterProgramming() {
         return proJokes.type == "programming";
     });
     console.log(programJokes)
+    programJokesFinal = []
 
     programJokesFinal = programJokesFinal.concat(programJokes)
     console.log("program Jokes", programJokesFinal)
