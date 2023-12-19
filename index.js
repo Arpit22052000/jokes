@@ -4,6 +4,7 @@ let allJokes1 = []
 
 let generalJokesFinal = []
 let programJokesFinal = []
+let otherJokesFinal = []
 
 document.addEventListener("DOMContentLoaded", function () {
     try {
@@ -65,8 +66,6 @@ function reload() {
                     postMethods();
                 }
                 reload()
-
-                // filter general function
             })
     } catch (error) {
         console.log(error)
@@ -113,6 +112,34 @@ function filterProgramming() {
     postContainer.innerHTML = '';
     const postMethods = () => {
         programJokesFinal.map((postData) => {
+            const postElement = document.createElement('div');
+            postElement.classList.add('.card');
+            postElement.innerHTML = `
+                                <h3 class="card-type" >${postData.type}</h3 >
+                                <p class="card-joke">${postData.setup}</p>
+                        `
+            postContainer.appendChild(postElement);
+        })
+    }
+    postMethods();
+}
+
+// added the type which are neither general nor programming
+function filterOthers() {
+    const otherJokes = allJokes.filter(function (otherJokes) {
+        return otherJokes.type !== "programming" && otherJokes.type !== "general";
+    });
+
+    console.log(otherJokes)
+    otherJokesFinal = []
+
+    otherJokesFinal = otherJokesFinal.concat(otherJokes)
+    console.log("other Jokes", otherJokesFinal)
+
+    let postContainer = document.querySelector('.card-container');
+    postContainer.innerHTML = '';
+    const postMethods = () => {
+        otherJokesFinal.map((postData) => {
             const postElement = document.createElement('div');
             postElement.classList.add('.card');
             postElement.innerHTML = `
