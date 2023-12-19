@@ -8,15 +8,20 @@
     <script src="./index.js"></script>
   </head>
   <body>
+    <!-- heading -->
     <div class="container">
       <h1>Jokes</h1>
     </div>
+
+    <!-- buttons -->
     <div class="button">
       <button id="newJokes" onclick="reload()">New Jokes</button><br /><br />
       <button id="general" onclick="filterGeneral()">General</button>
       <button id="program" onclick="filterProgramming()">Programming</button>
       <button id="others" onclick="filterOthers()">Others</button>
     </div>
+
+    <!-- contains the cards dynamically -->
     <div class="card-container"></div>
   </body>
 </html>
