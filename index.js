@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         postElement.innerHTML = `
                                 <h3 class="card-type" >${postData.type}</h3 >
                                 <p class="card-joke">${postData.setup}</p>
+
+                                <p class="card-punchline">${postData.punchline}</p>
                         `
                         postContainer.appendChild(postElement);
                     })
@@ -45,48 +47,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 // this reload the api and here allJokes are being updated through concatenation with allJokes1
+
 function reload() {
-    try {
-        fetch("https://official-joke-api.appspot.com/random_ten")
-            .then((response) => {
-                return response.json();
-            })
-            .then((jokes) => {
-                // reload function
-                function reload() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
 
-                    // since we are reloading the api, so it's necessary to clear the previous input so that, the next value get's appended to the previous values, and the previous values does not repeats two times
-                    let postContainer = document.querySelector('.card-container');
-                    postContainer.innerHTML = '';
+    console.log(scrollable)
+    console.log(scrolled)
 
-                    allJokes1 = jokes
-                    console.log("alljokes1: ", allJokes1)
+    if (Math.ceil(scrollable === scrolled)) {
+        try {
+            fetch("https://official-joke-api.appspot.com/random_ten")
+                .then((response) => {
+                    return response.json();
+                })
+                .then((jokes) => {
+                    // reload function
+                    function reload() {
 
-                    allJokes = allJokes.concat(allJokes1)
-                    console.log(allJokes)
+                        // since we are reloading the api, so it's necessary to clear the previous input so that, the next value get's appended to the previous values, and the previous values does not repeats two times
+                        let postContainer = document.querySelector('.card-container');
+                        postContainer.innerHTML = '';
 
-                    // this is responsible for making the card
-                    const postMethods = () => {
-                        allJokes.map((postData) => {
-                            const postElement = document.createElement('div');
-                            postElement.classList.add('.card');
-                            postElement.innerHTML = `
+                        allJokes1 = jokes
+                        console.log("alljokes1: ", allJokes1)
+
+                        allJokes = allJokes.concat(allJokes1)
+                        console.log(allJokes)
+
+                        // this is responsible for making the card
+                        const postMethods = () => {
+                            allJokes.map((postData) => {
+                                const postElement = document.createElement('div');
+                                postElement.classList.add('.card');
+                                postElement.innerHTML = `
                                 <h3 class="card-type" >${postData.type}</h3 >
                                 <p class="card-joke">${postData.setup}</p>
+                                <p class="card-punchline">${postData.punchline}</p>
                         `
-                            postContainer.appendChild(postElement);
-                        })
+                                postContainer.appendChild(postElement);
+                            })
+                        }
+                        postMethods();
                     }
-                    postMethods();
-                }
-                reload()
-            })
-    } catch (error) {
-        console.log(error)
+                    reload()
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
-
 
 
 // this function filters the general jokes from allJokes
@@ -115,6 +127,7 @@ function filterGeneral() {
             postElement.innerHTML = `
                                 <h3 class="card-type" >${postData.type}</h3 >
                                 <p class="card-joke">${postData.setup}</p>
+                                <p class="card-punchline">${postData.punchline}</p>
                         `
             postContainer.appendChild(postElement);
         })
@@ -150,6 +163,7 @@ function filterProgramming() {
             postElement.innerHTML = `
                                 <h3 class="card-type" >${postData.type}</h3 >
                                 <p class="card-joke">${postData.setup}</p>
+                                <p class="card-punchline">${postData.punchline}</p>
                         `
             postContainer.appendChild(postElement);
         })
@@ -184,6 +198,7 @@ function filterOthers() {
             postElement.innerHTML = `
                                 <h3 class="card-type" >${postData.type}</h3 >
                                 <p class="card-joke">${postData.setup}</p>
+                                <p class="card-punchline">${postData.punchline}</p>
                         `
             postContainer.appendChild(postElement);
         })
