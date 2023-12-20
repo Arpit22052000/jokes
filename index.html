@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="style.css" />
     <script src="./index.js"></script>
   </head>
-  <body>
+  <body onscroll="reload()">
     <!-- heading -->
-    <div class="container">
+    <div class="container"> 
       <h1>Jokes</h1>
-    </div>
+      <!-- buttons -->
+      <div class="button">
+        <button id="general" onclick="filterGeneral()">General</button>
+        <button id="program" onclick="filterProgramming()">Programming</button>
+        <button id="others" onclick="filterOthers()">Others</button>
+      </div>
 
-    <!-- buttons -->
-    <div class="button">
-      <button id="newJokes" onclick="reload()">New Jokes</button><br /><br />
-      <button id="general" onclick="filterGeneral()">General</button>
-      <button id="program" onclick="filterProgramming()">Programming</button>
-      <button id="others" onclick="filterOthers()">Others</button>
+      <!-- contains the cards dynamically -->
+      <div class="card-container"></div>
+      <footer>
+        <p>Random Api</p><br>
+        <a href="https://official-joke-api.appspot.com/random_ten">API LINK</a></p>
+</footer>
     </div>
-
-    <!-- contains the cards dynamically -->
-    <div class="card-container"></div>
   </body>
+</html>
+
 </html>
